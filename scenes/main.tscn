@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://cliljcj3thpi0"]
+
+[ext_resource type="Script" uid="uid://6p8g3aua65oa" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://gdlxfyu5kt1v" path="res://scripts/background_2.png" id="2_0wfyh"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_o5qli")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoText" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_right = 221.5
+offset_bottom = 88.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Timer 1.0 beta"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.5
+offset_top = -200.0
+offset_right = 258.5
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="StartTimer" type="Button" parent="CanvasLayer/HBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+text = "Play"
+
+[node name="ResumeTimer" type="Button" parent="CanvasLayer/HBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+text = "Resume"
+
+[node name="PauseTimer" type="Button" parent="CanvasLayer/HBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+text = "Pause"
+
+[node name="ResetTimer" type="Button" parent="CanvasLayer/HBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+text = "Reset
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -48.0
+offset_right = 123.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DecreaseTimer" type="Button" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+text = "<
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Time" type="Label" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+text = "00:00"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="IncreaseTimer" type="Button" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+text = ">"
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(474, 427)
+scale = Vector2(1.10486, 1.10486)
+texture = ExtResource("2_0wfyh")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/StartTimer" to="." method="_on_start_timer_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ResumeTimer" to="." method="_on_resume_timer_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PauseTimer" to="." method="_on_pause_timer_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ResetTimer" to="." method="_on_reset_timer_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer2/DecreaseTimer" to="." method="_on_decrease_timer_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer2/IncreaseTimer" to="." method="_on_increase_timer_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -11,5 +11,15 @@ config_version=5
 [application]
 
 config/name="timer"
+run/main_scene="uid://cliljcj3thpi0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=600
+
+[gui]
+
+theme/custom="uid://domswt0whpo28"
